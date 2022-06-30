@@ -13,6 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import certificates from './certificates';
 import fancybox from './fancybox';
 import calculator from './calculator';
+import productImagesSlider from './productImagesSlider';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     certificates();
     fancybox();
     calculator();
+    productImagesSlider();
 });
 
 document.addEventListener('lazyloaded', () => {

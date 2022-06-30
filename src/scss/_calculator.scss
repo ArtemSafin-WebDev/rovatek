@@ -256,7 +256,10 @@
     background-color: var(--primary-color);
     border-radius: 0.2rem;
     transition: color 0.2s, background-color 0.2s;
-
+    &:link,
+    &:visited {
+        color: white;
+    }
     svg {
         flex-shrink: 0;
         width: 4rem;

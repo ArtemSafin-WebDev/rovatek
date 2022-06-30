@@ -15,6 +15,10 @@
     visibility: hidden;
     transition: opacity 0.4s, visibility 0s linear 0.4s;
 
+    &--no-padding {
+        padding: 0;
+    }
+
     .no-touch & {
         @include customScrollbar();
         overflow-y: auto;
@@ -162,9 +166,9 @@ textarea.modal__form-input {
         line-height: 1.3rem;
     }
 
-    .parsley-error ~ & {
-        color: #fe6e6e;
-    }
+    // .parsley-error ~ & {
+    //     color: #fe6e6e;
+    // }
     textarea ~ & {
         transform: translateY(0);
         top: 0;
@@ -200,7 +204,7 @@ textarea.modal__form-input:focus ~ .modal__form-label-text {
     font-style: normal;
     font-weight: 500;
     font-size: 1.6rem;
-    line-height: 2.6rem;
+    line-height: 1.9rem;
     color: #7794a6;
 
     @include breakpoint(mobile) {
@@ -343,6 +347,632 @@ textarea.modal__form-input:focus ~ .modal__form-label-text {
     .touch &:active {
         background-color: var(--primary-color-hover);
     }
+    svg {
+        flex-shrink: 0;
+        fill: currentColor;
+        width: 4rem;
+        height: 4rem;
+
+        @include breakpoint(mobile) {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+}
+
+.modal__product {
+    width: 100%;
+    background: #ffffff;
+    flex-grow: 1;
+
+    position: relative;
+}
+
+.modal__product-close {
+    position: absolute;
+    width: 3.2rem;
+    height: 3.2rem;
+    right: 3.5rem;
+    top: 3.5rem;
+
+    @include breakpoint(mobile) {
+        width: 3rem;
+        height: 3rem;
+        right: 1.7rem;
+        top: 1rem;
+    }
+
+    svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: #706f6f;
+        transition: fill 0.2s;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        svg {
+            fill: var(--primary-color);
+        }
+    }
+}
+
+.modal__product-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 2rem;
+    padding: 6rem var(--side-padding);
+
+    @include breakpoint(mobile) {
+        padding-top: 1.6rem;
+        display: flex;
+        flex-direction: column;
+        grid-gap: 0;
+    }
+}
+
+.modal__product-col {
+    @include breakpoint(mobile) {
+        display: contents;
+    }
+}
+
+.modal__product-images {
+    padding-left: 3rem;
+    padding-right: 5.4rem;
+
+    @include breakpoint(mobile) {
+        padding: 0;
+        margin-top: 1.6rem;
+    }
+
+    .swiper {
+        overflow: visible;
+    }
+
+    .swiper-wrapper {
+        @include breakpointMF(small-tablet) {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            grid-gap: 12rem;
+        }
+
+        @include breakpoint(mobile) {
+            align-items: center;
+        }
+    }
+
+    .swiper-slide {
+        @include breakpoint(mobile) {
+            width: 27.6rem;
+            margin-right: 2rem;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.modal__product-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.modal__product-video-wrapper {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    z-index: 1;
+    &::before {
+        content: '';
+        display: block;
+        padding-bottom: 56.25%;
+    }
+
+    svg {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 8rem;
+        height: 8rem;
+        fill: white;
+        z-index: 5;
+
+        @include breakpoint(mobile) {
+            width: 5rem;
+            height: 5rem;
+        }
+    }
+}
+
+.modal__product-video-bg {
+    position: absolute;
+    inset: 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    }
+}
+
+.modal__product-video-bg-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal__product-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 5.4rem;
+    line-height: 7rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2.6rem;
+        line-height: 3.4rem;
+        order: -10;
+    }
+}
+
+.modal__product-model {
+    margin-top: 0.2rem;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 3.3rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+        order: -9;
+    }
+}
+
+.modal__product-btns {
+    display: flex;
+    align-items: center;
+    gap: 6.5rem;
+    margin-top: 5rem;
+
+    @include breakpoint(mobile) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2.6rem;
+        margin-top: 1.6rem;
+    }
+}
+
+.modal__product-callback-btn {
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 1.2;
+    gap: 2rem;
+    justify-content: space-between;
+    padding: 1.8rem 2.2rem;
+    padding-left: 2.6rem;
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 0.2rem;
+    transition: color 0.2s, background-color 0.2s;
+    &:link,
+    &:visited {
+        color: white;
+    }
+    svg {
+        flex-shrink: 0;
+        width: 4rem;
+        height: 4rem;
+        fill: currentColor;
+
+        @include breakpoint(mobile) {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.7rem;
+        line-height: 1.9rem;
+        padding: 1.4rem 2rem;
+        padding-left: 1.8rem;
+        border-radius: 0.3rem;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        background-color: var(--primary-color-hover);
+    }
+}
+
+.modal__product-doc-btn {
+    display: inline-flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+    gap: 0.3rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.3rem;
+        line-height: 1.2;
+        text-align: center;
+        justify-content: center;
+        align-self: center;
+    }
+
+    &:link,
+    &:visited {
+        color: var(--primary-color);
+    }
+    svg {
+        flex-shrink: 0;
+        width: 2.4rem;
+        height: 2.4rem;
+
+        @include breakpoint(mobile) {
+            width: 1.6rem;
+            height: 1.6rem;
+        }
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        color: var(--primary-color-hover);
+    }
+}
+
+.modal__product-specs {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-gap: 4.5rem;
+
+    @include breakpoint(mobile) {
+        margin-top: 3.4rem;
+        grid-gap: 3.4rem;
+    }
+}
+
+.modal__product-specs-block-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid #7794a6;
+    margin-bottom: 1.7rem;
+    color: var(--primary-color);
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.4rem;
+        padding-bottom: 0.4rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.modal__product-specs-block-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 2rem;
+    grid-row-gap: 1.2rem;
+
+    @include breakpoint(mobile) {
+        grid-gap: 1rem;
+        grid-row-gap: 1.5rem;
+    }
+}
+
+.modal__product-specs-block-card-key {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: #7794a6;
+    margin-bottom: 0.2rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.3rem;
+        margin-bottom: 0.3rem;
+    }
+}
+
+.modal__product-specs-block-card-text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+    }
+}
+
+.modal__product-form {
+    margin-top: auto;
+    padding-top: 4.2rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding-bottom: 5rem;
+
+    @include breakpoint(mobile) {
+        padding-top: 2.5rem;
+        padding-bottom: 3.5rem;
+    }
+}
+
+.modal__product-form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 2rem;
+    padding: 0 var(--side-padding);
+
+    @include breakpoint(mobile) {
+        grid-template-columns: minmax(0, 1fr);
+        grid-gap: 2.5rem;
+    }
+}
+
+.modal__product-form-heading {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 5.4rem;
+    line-height: 7rem;
+    margin-bottom: 1.7rem;
+    margin-top: -1rem;
+
+    @include breakpoint(mobile) {
+        margin: 0;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2.6rem;
+        line-height: 3.4rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.modal__product-form-text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 3.3rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+    }
+}
+
+.modal__product-form-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 2rem;
+    grid-row-gap: 4rem;
+
+    @include breakpoint(mobile) {
+        grid-template-columns: minmax(0, 1fr);
+        grid-gap: 2.5rem;
+    }
+}
+
+.modal__product-form-field {
+    .parsley-errors-list.filled {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.6rem;
+        color: #ffbcbc;
+        margin-top: 0.3rem;
+    }
+}
+
+.modal__product-form-label {
+    display: block;
+    position: relative;
+}
+
+.modal__product-form-input {
+    height: 3.2rem;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #ddebf2;
+    transition: border-color 0.2s, color 0.2s;
+    color: white;
+    &.parsley-error {
+        color: #ffbcbc;
+    }
+
+    @include placeholder {
+        opacity: 0;
+    }
+}
+
+textarea.modal__product-form-input {
+    resize: none;
+    height: 8rem;
+
+    @include breakpoint(mobile) {
+        height: 5rem;
+    }
+}
+
+.modal__product-form-label-text {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: #def3ff;
+    transform-origin: left center;
+    pointer-events: none;
+    transition: transform 0.2s;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.3rem;
+    }
+
+    // .parsley-error ~ & {
+    //     color: #FFBCBC;
+    // }
+    textarea ~ & {
+        transform: translateY(0);
+        top: 0;
+    }
+}
+
+.modal__product-form-input:not(:placeholder-shown) ~ .modal__product-form-label-text,
+.modal__product-form-input:focus ~ .modal__product-form-label-text {
+    transform: translateY(-50%) scale(0.7) translateY(-2.8rem);
+
+    @include breakpoint(mobile) {
+        transform: translateY(-50%) scale(1) translateY(-1.8rem);
+    }
+}
+textarea.modal__product-form-input:not(:placeholder-shown) ~ .modal__product-form-label-text,
+textarea.modal__product-form-input:focus ~ .modal__product-form-label-text {
+    transform: scale(0.7) translateY(-2.8rem);
+
+    @include breakpoint(mobile) {
+        transform: scale(1) translateY(-1.8rem);
+    }
+}
+
+.modal__product-form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.modal__product-form-checkbox-text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    color: #def3ff;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.3rem;
+    }
+    a {
+        color: white;
+        transition: all 0.2s;
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        &:hover {
+            text-decoration-color: white;
+        }
+    }
+}
+
+.modal__product-form-checkbox-input {
+    display: none;
+}
+
+.modal__product-form-checkbox-mark {
+    width: 2.2rem;
+    height: 2.2rem;
+    flex-shrink: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    transition: background-color 0.2s;
+    svg {
+        width: 1.6rem;
+        height: 1.1rem;
+        fill: var(--primary-color);
+        transition: opacity 0.2s;
+        opacity: 0;
+    }
+}
+
+.modal__product-form-checkbox-input:checked ~ .modal__product-form-checkbox-mark {
+    svg {
+        opacity: 1;
+    }
+}
+
+.modal__product-form-submit {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.8rem 3rem;
+    padding-left: 3.6rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 1.2;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5.5rem;
+    transition: background-color 0.2s, color 0.2s;
+
+    background-color: white;
+    color: var(--primary-color);
+    border-radius: 0.2rem;
+
+    .no-touch &:hover,
+    .touch &:active {
+        background-color: rgba(white, 0.85);
+    }
+
+    @include breakpoint(mobile) {
+        padding: 1.4rem 1.8rem;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.7rem;
+        line-height: 1.9rem;
+        border-radius: 0.3rem;
+        margin-top: 3.2rem;
+    }
+
     svg {
         flex-shrink: 0;
         fill: currentColor;
