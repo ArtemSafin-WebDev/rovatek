@@ -1,0 +1,97 @@
+<div class="modal js-modal" id="callback-modal">
+    <div class="modal__inner">
+        <button class="modal__close js-close-modal">
+            <svg width="45" height="45" aria-hidden="true" class="icon-close">
+                <use xlink:href="#close"></use>
+            </svg>
+        </button>
+        <h3 class="modal__heading">
+            Ваши контакты
+        </h3>
+        <form action="/" class="modal__form" data-need-validation="">
+            <div class="modal__form-fields">
+                <div class="modal__form-field" id="your-name">
+                    <label class="modal__form-label">
+                        <input type="text" name="your-name" class="modal__form-input" required=""
+                            data-parsley-errors-container="#your-name" placeholder="Имя">
+                        <span class="modal__form-label-text">
+                            Имя
+                        </span>
+                    </label>
+                </div>
+                <div class="modal__form-field" id="your-phone">
+                    <label class="modal__form-label">
+                        <input type="tel" name="your-phone" class="modal__form-input js-phone-input" required=""
+                            data-parsley-phone="" data-parsley-errors-container="#your-phone" placeholder="Телефон">
+                        <span class="modal__form-label-text">
+                            Телефон
+                        </span>
+                    </label>
+                </div>
+                <div class="modal__form-field" id="your-email">
+                    <label class="modal__form-label">
+                        <input type="email" name="your-email" class="modal__form-input" required=""
+                            data-parsley-errors-container="#your-email" placeholder="Почта">
+                        <span class="modal__form-label-text">
+                            Почта
+                        </span>
+                    </label>
+                </div>
+                <div class="modal__form-field" id="your-comment">
+                    <label class="modal__form-label">
+                        <textarea name="your-comment" class="modal__form-input"
+                            data-parsley-errors-container="#your-comment" placeholder="Комментарий"></textarea>
+
+                        <span class="modal__form-label-text">
+                            Комментарии
+                        </span>
+                    </label>
+                </div>
+                <div class="modal__form-field">
+                    <label class="modal__checkbox">
+                        <input type="checkbox" class="modal__checkbox-input" required="" name="policy" checked="">
+                        <span class="modal__checkbox-mark">
+                            <svg width="45" height="45" aria-hidden="true" class="icon-checkmark">
+                                <use xlink:href="#checkmark"></use>
+                            </svg>
+                        </span>
+                        <span class="modal__checkbox-text">
+                            Я согласен на обработку <a href="#">персональных данных</a>
+                        </span>
+
+                    </label>
+                </div>
+            </div>
+            <button class="modal__form-submit" type="submit">
+                Отправить
+                <svg width="45" height="45" aria-hidden="true" class="icon-arrow-right">
+                    <use xlink:href="#arrow-right"></use>
+                </svg>
+            </button>
+        </form>
+    </div>
+</div>
+<div class="modal js-modal" id="callback-modal-success">
+    <div class="modal__inner">
+        <button class="modal__close js-close-modal">
+            <svg width="45" height="45" aria-hidden="true" class="icon-close">
+                <use xlink:href="#close"></use>
+            </svg>
+        </button>
+        <h3 class="modal__heading">
+            Заявка отправлена
+        </h3>
+        <div class="modal__text">
+            <p>
+                Ваше запрос успешно отправлен!<br> Спасибо за обращение
+            </p>
+        </div>
+        <button class="modal__back js-close-modal">
+            На главную
+            <svg width="45" height="45" aria-hidden="true" class="icon-arrow-right">
+                <use xlink:href="#arrow-right"></use>
+            </svg>
+        </button>
+
+    </div>
+</div>

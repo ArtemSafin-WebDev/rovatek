@@ -1,0 +1,126 @@
+.certificates {
+    margin-bottom: 9rem;
+
+    @include breakpoint(mobile) {
+        margin-bottom: 4rem;
+    }
+}
+
+.certificates__content {
+    padding: 0 var(--side-padding);
+}
+
+.certificates__top-row {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    justify-content: space-between;
+    margin-bottom: 6rem;
+
+    @include breakpoint(mobile) {
+        gap: 3rem;
+        margin-bottom: 1.3rem;
+    }
+}
+
+.certificates__heading {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 7.2rem;
+    line-height: 9.3rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 2.4rem;
+        line-height: 3.1rem;
+    }
+}
+
+.certificates__arrows {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    @include breakpoint(mobile) {
+        gap: 1rem;
+    }
+}
+
+.certificates__arrow {
+    width: 7.2rem;
+    height: 7.2rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #eff8fc;
+    border-radius: 50%;
+    transition: border-color 0.2s, background-color 0.2s;
+    flex-shrink: 0;
+
+    @include breakpoint(mobile) {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+    svg {
+        width: 3.5rem;
+        height: 3.5rem;
+        transition: fill 0.2s;
+        fill: #47aadc;
+
+        @include breakpoint(mobile) {
+            width: 2.2rem;
+            height: 2.2rem;
+        }
+    }
+
+    &.swiper-button-disabled {
+        background: #eff8fc;
+        cursor: default;
+        svg {
+            fill: #b2d7e9;
+        }
+    }
+
+    .no-touch &:not(.swiper-button-disabled):hover,
+    .touch &:not(.swiper-button-disabled):active {
+        background-color: var(--primary-color);
+        svg {
+            fill: white;
+        }
+    }
+}
+
+.certificates__slider {
+    .swiper-slide {
+        width: 25%;
+
+        @include breakpoint(mobile) {
+            width: 14rem;
+            margin-right: 1rem;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .swiper {
+        @include breakpoint(mobile) {
+            overflow: visible;
+        }
+    }
+}
+
+.certificates__slider-card {
+    display: block;
+    
+}
+
+.certificates__slider-card-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    
+}

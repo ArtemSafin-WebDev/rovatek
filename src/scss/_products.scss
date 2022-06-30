@@ -1,0 +1,301 @@
+.products {
+    margin-bottom: 12rem;
+
+    @include breakpoint(mobile) {
+        margin-bottom: 5rem;
+    }
+}
+
+.products__content {
+    padding: 0 var(--side-padding);
+}
+.products__list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-gap: 12rem;
+
+    @include breakpoint(mobile) {
+        grid-gap: 5rem;
+    }
+}
+
+.products__card-top-row {
+    margin-bottom: 4.8rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+
+    @include breakpoint(mobile) {
+        flex-direction: column;
+        margin-bottom: 3.5rem;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+}
+
+.products__card-heading-wrapper {
+    width: 50%;
+    flex-grow: 1;
+
+    @include breakpoint(mobile) {
+        width: 100%;
+        flex-grow: 0;
+    }
+}
+
+.products__card-heading {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 7.2rem;
+    line-height: 9.3rem;
+    margin-bottom: 1rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 2.4rem;
+        line-height: 3.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.products__card-model {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 1.2;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+    }
+}
+
+.products__card-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    row-gap: 0.6rem;
+    margin-top: 2.9rem;
+    @include breakpoint(mobile) {
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        margin: 0;
+        margin: 0 calc((var(--side-padding) + var(--content-padding)) * -1);
+        padding: 0 calc((var(--side-padding) + var(--content-padding)));
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+
+        @include noScrollbar();
+    }
+}
+
+.products__card-nav-link {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 0.9rem 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    background: #f3f4f4;
+    border-radius: 6.2rem;
+    transition: background-color 0.2s, color 0.2s;
+    color: #161817;
+    white-space: nowrap;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.2;
+        padding: 0.9rem 1.2rem;
+    }
+
+    &.active {
+        background: #47aadc;
+        color: white;
+        cursor: default;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        background-color: var(--primary-color);
+        color: white;
+    }
+}
+
+.products__card-content {
+    border: 2px solid #def3ff;
+    border-radius: 1.8rem;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 2rem;
+
+    min-height: 45rem;
+
+    @include breakpoint(mobile) {
+        min-height: auto;
+        grid-template-columns: minmax(0, 1fr);
+        grid-gap: 0;
+    }
+}
+
+.products__card-specs-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 2rem;
+    grid-row-gap: 3.8rem;
+    margin-bottom: 6.4rem;
+
+    @include breakpoint(mobile) {
+        grid-gap: 1rem;
+        margin-bottom: 2.5rem;
+        grid-row-gap: 1.2rem;
+    }
+}
+.products__card-specs-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.products__card-specs-card-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: #7794a6;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.3rem;
+    }
+}
+
+.products__card-specs-card-value {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+    }
+}
+
+.products__details-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+    text-transform: uppercase;
+    color: var(--primary-color);
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.3rem;
+        line-height: 1.2;
+        gap: .4rem;
+    }
+
+    &:link,
+    &:visited {
+        color: var(--primary-color);
+    }
+    svg {
+        width: 2.4rem;
+        height: 2.4rem;
+        fill: currentColor;
+
+        @include breakpoint(mobile) {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        color: var(--primary-color-hover);
+    }
+}
+
+.products__card-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.products__card-image-container {
+
+    @include breakpointMF(small-tablet) {
+        margin-top: -11.5rem;
+        padding-right: 4rem;
+        align-self: flex-end;
+    
+        .products__list-item:nth-child(even) & {
+            order: -1;
+            padding-right: 0;
+            padding-left: 4rem;
+        }
+    }
+
+    @include breakpoint(mobile) {
+        padding: 0 3rem;
+        margin-top: -2.5rem;
+        order: -1;
+    }
+   
+}
+
+.products__card-info {
+    padding: 4rem;
+    padding-bottom: 6rem;
+
+    @include breakpoint(mobile) {
+        padding: 1.5rem;
+        padding-bottom: 2.5rem;
+        padding-top: 0;
+    }
+}
+
+.products__card-tabs {
+    position: relative;
+}
+
+.products__card-tabs-item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: 5;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0s linear 0.4s;
+
+    &.active {
+        position: relative;
+        z-index: 10;
+        transition: opacity 0.4s, visibility 0.4s;
+        opacity: 1;
+        visibility: inherit;
+    }
+}

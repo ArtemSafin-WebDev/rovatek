@@ -1,0 +1,357 @@
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    z-index: 130;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    padding: calc(var(--content-padding) + var(--side-padding));
+    background: rgba(#000000, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0s linear 0.4s;
+
+    .no-touch & {
+        @include customScrollbar();
+        overflow-y: auto;
+    }
+
+    &:not(.active) {
+        right: calc(-1 * var(--sb-width, 0));
+    }
+
+    &.active {
+        opacity: 1;
+        visibility: inherit;
+        transition: opacity 0.4s, visibility 0.4s;
+    }
+}
+
+.modal__inner {
+    background: #ffffff;
+    border-radius: 1rem;
+    margin: auto;
+    max-width: 58rem;
+    padding: 6rem;
+    padding-top: 3.2rem;
+    position: relative;
+    width: 100%;
+    @include breakpoint(mobile) {
+        padding: 2.5rem;
+        border-radius: 1rem;
+        padding-top: 1.4rem;
+    }
+}
+
+.modal__close {
+    position: absolute;
+    width: 3.2rem;
+    height: 3.2rem;
+    right: 2.2rem;
+    top: 2.2rem;
+
+    @include breakpoint(mobile) {
+        width: 3rem;
+        height: 3rem;
+        right: 1rem;
+        top: 1rem;
+    }
+
+    svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: #706f6f;
+        transition: fill 0.2s;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        svg {
+            fill: var(--primary-color);
+        }
+    }
+}
+
+.modal__heading {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 4.5rem;
+    line-height: 5.8rem;
+    margin-bottom: 1.5rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2.6rem;
+        line-height: 3.4rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+.modal__form-fields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-gap: 2.5rem;
+}
+
+.modal__form-field {
+    .parsley-errors-list.filled {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.6rem;
+        color: #fe6e6e;
+        margin-top: 0.3rem;
+    }
+}
+
+.modal__form-label {
+    display: block;
+    position: relative;
+}
+
+.modal__form-input {
+    height: 3.2rem;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6rem;
+    border-bottom: 1px solid #ddebf2;
+    transition: border-color 0.2s, color 0.2s;
+    color: #151616;
+    &.parsley-error {
+        color: #fe6e6e;
+    }
+
+    @include placeholder {
+        opacity: 0;
+    }
+}
+
+textarea.modal__form-input {
+    resize: none;
+    height: 8rem;
+
+    @include breakpoint(mobile) {
+        height: 5rem;
+    }
+}
+
+.modal__form-label-text {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: #7794a6;
+    transform-origin: left center;
+    pointer-events: none;
+    transition: transform 0.2s;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.3rem;
+    }
+
+    .parsley-error ~ & {
+        color: #fe6e6e;
+    }
+    textarea ~ & {
+        transform: translateY(0);
+        top: 0;
+    }
+}
+
+.modal__form-input:not(:placeholder-shown) ~ .modal__form-label-text,
+.modal__form-input:focus ~ .modal__form-label-text {
+    transform: translateY(-50%) scale(0.7) translateY(-2.8rem);
+
+    @include breakpoint(mobile) {
+        transform: translateY(-50%) scale(1) translateY(-1.8rem);
+    }
+}
+textarea.modal__form-input:not(:placeholder-shown) ~ .modal__form-label-text,
+textarea.modal__form-input:focus ~ .modal__form-label-text {
+    transform: scale(0.7) translateY(-2.8rem);
+
+    @include breakpoint(mobile) {
+        transform: scale(1) translateY(-1.8rem);
+    }
+}
+
+.modal__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.modal__checkbox-text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: #7794a6;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.3rem;
+    }
+    a {
+        color: var(--text-color);
+        transition: all 0.2s;
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        &:hover {
+            text-decoration-color: var(--text-color);
+        }
+    }
+}
+
+.modal__checkbox-input {
+    display: none;
+}
+
+.modal__checkbox-mark {
+    width: 2.2rem;
+    height: 2.2rem;
+    flex-shrink: 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #7794a6;
+    transition: background-color 0.2s;
+    svg {
+        width: 1.6rem;
+        height: 1.1rem;
+        fill: white;
+        transition: opacity 0.2s;
+        opacity: 0;
+    }
+}
+
+.modal__checkbox-input:checked ~ .modal__checkbox-mark {
+    background-color: var(--primary-color);
+    svg {
+        opacity: 1;
+    }
+}
+
+.modal__form-submit {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.8rem 3rem;
+    padding-left: 3.6rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 1.2;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 4rem;
+    transition: background-color 0.2s, color 0.2s;
+
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 0.2rem;
+
+    @include breakpoint(mobile) {
+        padding: 1.4rem 1.8rem;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.7rem;
+        line-height: 1.9rem;
+        border-radius: 0.3rem;
+        margin-top: 3.2rem;
+    }
+    .no-touch &:hover,
+    .touch &:active {
+        background-color: var(--primary-color-hover);
+    }
+    svg {
+        flex-shrink: 0;
+        fill: currentColor;
+        width: 4rem;
+        height: 4rem;
+
+        @include breakpoint(mobile) {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+}
+
+.modal__text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    margin-bottom: 3.6rem;
+    margin-top: 1.5rem;
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        margin-bottom: 2.4rem;
+    }
+}
+
+.modal__back {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.8rem 3rem;
+    padding-left: 3.6rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 1.2;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 4rem;
+    transition: background-color 0.2s, color 0.2s;
+
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 0.2rem;
+
+    @include breakpoint(mobile) {
+        padding: 1.4rem 1.8rem;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.7rem;
+        line-height: 1.9rem;
+        border-radius: 0.3rem;
+        margin-top: 3.2rem;
+    }
+    .no-touch &:hover,
+    .touch &:active {
+        background-color: var(--primary-color-hover);
+    }
+    svg {
+        flex-shrink: 0;
+        fill: currentColor;
+        width: 4rem;
+        height: 4rem;
+
+        @include breakpoint(mobile) {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+}
