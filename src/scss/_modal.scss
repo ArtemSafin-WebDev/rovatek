@@ -985,3 +985,59 @@ textarea.modal__product-form-input:focus ~ .modal__product-form-label-text {
         }
     }
 }
+
+.modal__product-back {
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #7794a6;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 30;
+
+    @include breakpoint(mobile) {
+        height: 5rem;
+    }
+}
+
+.modal__product-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    color: #7794a6;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.2;
+        gap: .5rem;
+    }
+    &:link,
+    &:visited {
+        color: #7794a6;
+    }
+
+
+    .no-touch &:hover,
+    .touch &:active {
+        color: var(--primary-color);
+    }
+    svg {
+        flex-shrink: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+        fill: currentColor;
+
+        @include breakpoint(mobile) {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}

@@ -98,12 +98,20 @@
 
 <div class="modal modal--no-padding js-modal" id="product-modal">
     <div class="modal__product">
-        <button class="modal__product-close js-close-modal">
+        {{!-- <button class="modal__product-close js-close-modal">
             <svg width="45" height="45" aria-hidden="true" class="icon-close">
                 <use xlink:href="#close"></use>
             </svg>
-        </button>
+        </button> --}}
         <div class="container">
+            <div class="modal__product-back">
+                <button class="modal__product-back-btn js-close-modal">
+                    <svg width="45" height="45" aria-hidden="true" class="icon-arrow-back">
+                        <use xlink:href="#arrow-back"></use>
+                    </svg>
+                    Назад
+                </button>
+            </div>
             <div class="modal__product-row">
                 <div class="modal__product-col">
                     <div class="modal__product-images js-product-images-slider">
