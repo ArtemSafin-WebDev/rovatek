@@ -1,0 +1,98 @@
+.cookie {
+    position: fixed;
+    z-index: 100;
+    right: 2.4rem;
+    bottom: 2.4rem;
+    background: #ffffff;
+    box-shadow: 0.4rem 0.4rem 3.4rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 1.5rem 2rem;
+    color: var(--text-color);
+    width: 40rem;
+    padding-right: 6rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility 0s linear .3s;
+
+    &.shown {
+        opacity: 1;
+        visibility: inherit;
+        transition: opacity .3s, visibility .3s;
+    }
+
+    @include breakpoint(mobile) {
+        width: auto;
+        right: var(--content-padding);
+        left: var(--content-padding);
+        bottom: var(--content-padding);
+        padding: 1.5rem;
+        padding-right: 6rem;
+    }
+}
+
+.cookie__text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.1rem;
+    margin-bottom: 1.5rem;
+
+    @include breakpoint(mobile) {
+        font-size: 1.4rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+}
+
+.cookie__ok {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+    text-transform: uppercase;
+    color: #47aadc;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: all .2s;
+
+    @include breakpoint(mobile) {
+        font-size: 1.4rem;
+        line-height: 1.2;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        text-decoration-color: #47aadc;
+    }
+}
+
+.cookie__close {
+    position: absolute;
+    right: 1.8rem;
+    top: 1.2rem;
+
+    @include breakpoint(mobile) {
+        right: 1.5rem;
+        top: 1.5rem;
+    }
+
+    svg {
+        display: block;
+        width: 3.2rem;
+        height: 3.2rem;
+        fill: #706f6f;
+        transition: fill .2s;
+
+        @include breakpoint(mobile) {
+            width: 2.4rem;
+            height: 2.4rem;
+        }
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        svg {
+            fill: var(--primary-color);
+        }
+    }
+}

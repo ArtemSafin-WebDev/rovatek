@@ -14,6 +14,7 @@ import certificates from './certificates';
 import fancybox from './fancybox';
 import calculator from './calculator';
 import productImagesSlider from './productImagesSlider';
+import cookies from './cookies';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fancybox();
     calculator();
     productImagesSlider();
+    cookies();
 });
 
 document.addEventListener('lazyloaded', () => {
