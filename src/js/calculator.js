@@ -19,7 +19,7 @@ export default function calculator() {
         const consumption = element.querySelector('.js-consumption');
         const energyTariff = element.querySelector('.js-energy-tariff');
         const gasTariff = element.querySelector('.js-gas-tariff');
-
+        const load = element.querySelector('.js-load')
         const energyCostsCurrent = element.querySelector('.js-energy-costs-current');
         const energyCostsPrognose = element.querySelector('.js-energy-costs-prognose');
         const newTariff = element.querySelector('.js-new-tariff');
@@ -28,11 +28,18 @@ export default function calculator() {
         const inputs = Array.from(element.querySelectorAll('input'));
 
         const calculate = () => {
-            const consumptionCleaned = consumption.value.trim() ? parseFloat(consumption.value.replace(/[^\d]+/g, '')) : 0;
-            const energeTariffCleaned = energyTariff.value.trim() ? parseFloat(energyTariff.value.replace(',', '').replace(/[^\d]+/g, '')) : 0;
-            const gasTariffCleaned = gasTariff.value.trim() ? parseFloat(gasTariff.value.replace(',', '').replace(/[^\d]+/g, '')) : 0;
+            const consumptionCleaned = consumption.value.trim() ? parseFloat(consumption.value.replace(/\s/g, '')) : 0;
+            const energeTariffCleaned = energyTariff.value.trim() ? parseFloat(energyTariff.value.replace(',', '.').replace(/\s/g, '')) : 0;
+            const gasTariffCleaned = gasTariff.value.trim() ? parseFloat(gasTariff.value.replace(',', '.').replace(/\s/g, '')) : 0;
+            const loadCleaned = load.value.trim() ? parseFloat(load.value.replace(/\s/g, '')) : 0;
+
+            console.log({
+                consumptionCleaned,
+                energeTariffCleaned,
+                gasTariffCleaned
+            })
             const enCostCurrent = consumptionCleaned * energeTariffCleaned * 720;
-            const enCostPrognose = consumptionCleaned * gasTariffCleaned * 720 * 0.31;
+            const enCostPrognose = consumptionCleaned * (loadCleaned * 30) * gasTariffCleaned * 0.31;
             energyCostsCurrent.textContent = enCostCurrent.toLocaleString();
             energyCostsPrognose.textContent = enCostPrognose.toLocaleString();
             newTariff.textContent = (gasTariffCleaned * 0.31).toLocaleString();

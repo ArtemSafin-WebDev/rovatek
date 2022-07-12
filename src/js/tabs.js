@@ -10,14 +10,17 @@ export default function tabs() {
     elements.forEach(element => {
         const btns = Array.from(element.querySelectorAll('.js-tabs-btn'));
         const items = Array.from(element.querySelectorAll('.js-tabs-item'));
+        const secondaryItems = Array.from(element.querySelectorAll('.js-tabs-item-2'))
 
         const setActiveTab = index => {
             const state = Flip.getState(items[0].parentElement);
             btns.forEach(btn => btn.classList.remove('active'));
             items.forEach(item => item.classList.remove('active'));
+            secondaryItems.forEach(item => item.classList.remove('active'));
 
             btns[index].classList.add('active');
             items[index].classList.add('active');
+            secondaryItems[index]?.classList.add('active');
 
             Flip.from(state, {
                 ease: 'power1.inOut',

@@ -15,6 +15,7 @@ import fancybox from './fancybox';
 import calculator from './calculator';
 import productImagesSlider from './productImagesSlider';
 import cookies from './cookies';
+import numHours from './numHours';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     calculator();
     productImagesSlider();
     cookies();
+    numHours();
 });
 
 document.addEventListener('lazyloaded', () => {
