@@ -29,16 +29,16 @@ export default function calculator() {
 
         const calculate = () => {
             const consumptionCleaned = consumption.value.trim() ? parseFloat(consumption.value.replace(/\s/g, '')) : 0;
-            const energeTariffCleaned = energyTariff.value.trim() ? parseFloat(energyTariff.value.replace(',', '.').replace(/\s/g, '')) : 0;
+            const energyTariffCleaned = energyTariff.value.trim() ? parseFloat(energyTariff.value.replace(',', '.').replace(/\s/g, '')) : 0;
             const gasTariffCleaned = gasTariff.value.trim() ? parseFloat(gasTariff.value.replace(',', '.').replace(/\s/g, '')) : 0;
             const loadCleaned = load.value.trim() ? parseFloat(load.value.replace(/\s/g, '')) : 0;
 
             console.log({
                 consumptionCleaned,
-                energeTariffCleaned,
+                energyTariffCleaned,
                 gasTariffCleaned
             })
-            const enCostCurrent = consumptionCleaned * energeTariffCleaned * 720;
+            const enCostCurrent = consumptionCleaned * energyTariffCleaned * (loadCleaned * 30);
             const enCostPrognose = consumptionCleaned * (loadCleaned * 30) * gasTariffCleaned * 0.31;
             energyCostsCurrent.textContent = enCostCurrent.toLocaleString();
             energyCostsPrognose.textContent = enCostPrognose.toLocaleString();
